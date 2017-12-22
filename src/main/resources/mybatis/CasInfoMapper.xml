@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shijihui.mapper.CasInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.shijihui.entity.CasInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cas" property="cas" jdbcType="VARCHAR" />
+    <result column="chiness_name" property="chinessName" jdbcType="VARCHAR" />
+    <result column="chiness_synonym" property="chinessSynonym" jdbcType="VARCHAR" />
+    <result column="english_name" property="englishName" jdbcType="VARCHAR" />
+    <result column="english_synonym" property="englishSynonym" jdbcType="VARCHAR" />
+    <result column="molecular_formula" property="molecularFormula" jdbcType="VARCHAR" />
+    <result column="molecular_weight" property="molecularWeight" jdbcType="VARCHAR" />
+    <result column="einecs" property="einecs" jdbcType="VARCHAR" />
+    <result column="melting_point" property="meltingPoint" jdbcType="VARCHAR" />
+    <result column="boiling_point" property="boilingPoint" jdbcType="VARCHAR" />
+    <result column="density" property="density" jdbcType="VARCHAR" />
+    <result column="refractivity" property="refractivity" jdbcType="VARCHAR" />
+    <result column="fema" property="fema" jdbcType="VARCHAR" />
+    <result column="flash_point" property="flashPoint" jdbcType="VARCHAR" />
+    <result column="storage_condition" property="storageCondition" jdbcType="VARCHAR" />
+    <result column="water_solubility" property="waterSolubility" jdbcType="VARCHAR" />
+    <result column="sensibility" property="sensibility" jdbcType="VARCHAR" />
+    <result column="merck" property="merck" jdbcType="VARCHAR" />
+    <result column="brn" property="brn" jdbcType="VARCHAR" />
+    <result column="stabilization" property="stabilization" jdbcType="VARCHAR" />
+    <result column="chemicalbook_url" property="chemicalbookUrl" jdbcType="VARCHAR" />
+    <result column="chemacal_proprety" property="chemacalProprety" jdbcType="VARCHAR" />
+    <result column="production_method" property="productionMethod" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="toxicity_level" property="toxicityLevel" jdbcType="VARCHAR" />
+    <result column="acute_toxicity_characteristics" property="acuteToxicityCharacteristics" jdbcType="VARCHAR" />
+    <result column="flammability_hazard_characteristics" property="flammabilityHazardCharacteristics" jdbcType="VARCHAR" />
+    <result column="storage_characteristics" property="storageCharacteristics" jdbcType="VARCHAR" />
+    <result column="annihilator" property="annihilator" jdbcType="VARCHAR" />
+    <result column="professional_standards" property="professionalStandards" jdbcType="VARCHAR" />
+    <result column="dangerous_mark" property="dangerousMark" jdbcType="VARCHAR" />
+    <result column="Hazard_class_code" property="hazardClassCode" jdbcType="VARCHAR" />
+    <result column="safety_instructions" property="safetyInstructions" jdbcType="VARCHAR" />
+    <result column="dangerous_goods_transport_number" property="dangerousGoodsTransportNumber" jdbcType="VARCHAR" />
+    <result column="wgkgermany" property="wgkgermany" jdbcType="VARCHAR" />
+    <result column="rtecs_number" property="rtecsNumber" jdbcType="VARCHAR" />
+    <result column="packing_group" property="packingGroup" jdbcType="VARCHAR" />
+    <result column="customs_code" property="customsCode" jdbcType="VARCHAR" />
+    <result column="toxic_substance_data" property="toxicSubstanceData" jdbcType="VARCHAR" />
+    <result column="downstream_products" property="downstreamProducts" jdbcType="VARCHAR" />
+    <result column="upstream_material" property="upstreamMaterial" jdbcType="VARCHAR" />
+    <result column="second_level_category" property="secondLevelCategory" jdbcType="VARCHAR" />
+    <result column="three_level_category" property="threeLevelCategory" jdbcType="VARCHAR" />
+    <result column="exact_mass" property="exactMass" jdbcType="VARCHAR" />
+    <result column="logp" property="logp" jdbcType="VARCHAR" />
+    <result column="psa" property="psa" jdbcType="VARCHAR" />
+    <result column="appearance_and_character" property="appearanceAndCharacter" jdbcType="VARCHAR" />
+    <result column="vapor_pressure" property="vaporPressure" jdbcType="VARCHAR" />
+    <result column="symbol" property="symbol" jdbcType="VARCHAR" />
+    <result column="signal_word" property="signalWord" jdbcType="VARCHAR" />
+    <result column="hazard_statement" property="hazardStatement" jdbcType="VARCHAR" />
+    <result column="cautionary_statement" property="cautionaryStatement" jdbcType="VARCHAR" />
+    <result column="hazard_level" property="hazardLevel" jdbcType="VARCHAR" />
+    <result column="mobase_url" property="mobaseUrl" jdbcType="VARCHAR" />
+    <result column="mdl_number" property="mdlNumber" jdbcType="VARCHAR" />
+    <result column="pubchem_number" property="pubchemNumber" jdbcType="VARCHAR" />
+    <result column="Physical_data" property="physicalData" jdbcType="VARCHAR" />
+    <result column="toxicology_data" property="toxicologyData" jdbcType="VARCHAR" />
+    <result column="ecological_data" property="ecologicalData" jdbcType="VARCHAR" />
+    <result column="molecular_structure_data" property="molecularStructureData" jdbcType="VARCHAR" />
+    <result column="computational_chemistry_data" property="computationalChemistryData" jdbcType="VARCHAR" />
+    <result column="property_and_stability" property="propertyAndStability" jdbcType="VARCHAR" />
+    <result column="storage_method" property="storageMethod" jdbcType="VARCHAR" />
+    <result column="synthetic_method" property="syntheticMethod" jdbcType="VARCHAR" />
+    <result column="purpose" property="purpose" jdbcType="VARCHAR" />
+    <result column="security_information" property="securityInformation" jdbcType="VARCHAR" />
+    <result column="huashang_url" property="huashangUrl" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, cas, chiness_name, chiness_synonym,
+      english_name, english_synonym, molecular_formula,
+      molecular_weight, einecs, melting_point,
+      boiling_point, density, refractivity,
+      fema, flash_point, storage_condition,
+      water_solubility, sensibility, merck,
+      brn, stabilization, chemicalbook_url,
+      chemacal_proprety, production_method, category,
+      toxicity_level, acute_toxicity_characteristics,
+      flammability_hazard_characteristics, storage_characteristics,
+      annihilator, professional_standards, dangerous_mark,
+      Hazard_class_code, safety_instructions, dangerous_goods_transport_number,
+      wgkgermany, rtecs_number, packing_group,
+      customs_code, toxic_substance_data, downstream_products,
+      upstream_material, second_level_category,
+      three_level_category, exact_mass, logp, psa,
+      appearance_and_character, vapor_pressure,
+      symbol, signal_word, hazard_statement,
+      cautionary_statement, hazard_level, mobase_url,
+      mdl_number, pubchem_number, Physical_data,
+      toxicology_data, ecological_data, molecular_structure_data,
+      computational_chemistry_data, property_and_stability,
+      storage_method, synthetic_method, purpose,
+      security_information, huashang_url
+  </sql>
+
+  <insert id="insert" parameterType="com.shijihui.entity.CasInfo" >
+    insert into cas_info (<include refid="Base_Column_List" />)
+    values (#{id,jdbcType=INTEGER}, #{cas,jdbcType=VARCHAR}, #{chinessName,jdbcType=VARCHAR}, #{chinessSynonym,jdbcType=VARCHAR},
+      #{englishName,jdbcType=VARCHAR}, #{englishSynonym,jdbcType=VARCHAR}, #{molecularFormula,jdbcType=VARCHAR}, 
+      #{molecularWeight,jdbcType=VARCHAR}, #{einecs,jdbcType=VARCHAR}, #{meltingPoint,jdbcType=VARCHAR}, 
+      #{boilingPoint,jdbcType=VARCHAR}, #{density,jdbcType=VARCHAR}, #{refractivity,jdbcType=VARCHAR}, 
+      #{fema,jdbcType=VARCHAR}, #{flashPoint,jdbcType=VARCHAR}, #{storageCondition,jdbcType=VARCHAR}, 
+      #{waterSolubility,jdbcType=VARCHAR}, #{sensibility,jdbcType=VARCHAR}, #{merck,jdbcType=VARCHAR}, 
+      #{brn,jdbcType=VARCHAR}, #{stabilization,jdbcType=VARCHAR}, #{chemicalbookUrl,jdbcType=VARCHAR}, 
+      #{chemacalProprety,jdbcType=VARCHAR}, #{productionMethod,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{toxicityLevel,jdbcType=VARCHAR}, #{acuteToxicityCharacteristics,jdbcType=VARCHAR}, 
+      #{flammabilityHazardCharacteristics,jdbcType=VARCHAR}, #{storageCharacteristics,jdbcType=VARCHAR}, 
+      #{annihilator,jdbcType=VARCHAR}, #{professionalStandards,jdbcType=VARCHAR}, #{dangerousMark,jdbcType=VARCHAR}, 
+      #{hazardClassCode,jdbcType=VARCHAR}, #{safetyInstructions,jdbcType=VARCHAR}, #{dangerousGoodsTransportNumber,jdbcType=VARCHAR}, 
+      #{wgkgermany,jdbcType=VARCHAR}, #{rtecsNumber,jdbcType=VARCHAR}, #{packingGroup,jdbcType=VARCHAR}, 
+      #{customsCode,jdbcType=VARCHAR}, #{toxicSubstanceData,jdbcType=VARCHAR}, #{downstreamProducts,jdbcType=VARCHAR}, 
+      #{upstreamMaterial,jdbcType=VARCHAR}, #{secondLevelCategory,jdbcType=VARCHAR}, 
+      #{threeLevelCategory,jdbcType=VARCHAR}, #{exactMass,jdbcType=VARCHAR}, #{logp,jdbcType=VARCHAR}, #{psa,jdbcType=VARCHAR},
+      #{appearanceAndCharacter,jdbcType=VARCHAR}, #{vaporPressure,jdbcType=VARCHAR}, 
+      #{symbol,jdbcType=VARCHAR}, #{signalWord,jdbcType=VARCHAR}, #{hazardStatement,jdbcType=VARCHAR}, 
+      #{cautionaryStatement,jdbcType=VARCHAR}, #{hazardLevel,jdbcType=VARCHAR}, #{mobaseUrl,jdbcType=VARCHAR}, 
+      #{mdlNumber,jdbcType=VARCHAR}, #{pubchemNumber,jdbcType=VARCHAR}, #{physicalData,jdbcType=VARCHAR}, 
+      #{toxicologyData,jdbcType=VARCHAR}, #{ecologicalData,jdbcType=VARCHAR}, #{molecularStructureData,jdbcType=VARCHAR}, 
+      #{computationalChemistryData,jdbcType=VARCHAR}, #{propertyAndStability,jdbcType=VARCHAR}, 
+      #{storageMethod,jdbcType=VARCHAR}, #{syntheticMethod,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR}, 
+      #{securityInformation,jdbcType=VARCHAR}, #{huashangUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shijihui.entity.CasInfo" >
+    insert into cas_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cas != null" >
+        cas,
+      </if>
+      <if test="chinessName != null" >
+        chiness_name,
+      </if>
+      <if test="chinessSynonym != null" >
+        chiness_synonym,
+      </if>
+      <if test="englishName != null" >
+        english_name,
+      </if>
+      <if test="englishSynonym != null" >
+        english_synonym,
+      </if>
+      <if test="molecularFormula != null" >
+        molecular_formula,
+      </if>
+      <if test="molecularWeight != null" >
+        molecular_weight,
+      </if>
+      <if test="einecs != null" >
+        einecs,
+      </if>
+      <if test="meltingPoint != null" >
+        melting_point,
+      </if>
+      <if test="boilingPoint != null" >
+        boiling_point,
+      </if>
+      <if test="density != null" >
+        density,
+      </if>
+      <if test="refractivity != null" >
+        refractivity,
+      </if>
+      <if test="fema != null" >
+        fema,
+      </if>
+      <if test="flashPoint != null" >
+        flash_point,
+      </if>
+      <if test="storageCondition != null" >
+        storage_condition,
+      </if>
+      <if test="waterSolubility != null" >
+        water_solubility,
+      </if>
+      <if test="sensibility != null" >
+        sensibility,
+      </if>
+      <if test="merck != null" >
+        merck,
+      </if>
+      <if test="brn != null" >
+        brn,
+      </if>
+      <if test="stabilization != null" >
+        stabilization,
+      </if>
+      <if test="chemicalbookUrl != null" >
+        chemicalbook_url,
+      </if>
+      <if test="chemacalProprety != null" >
+        chemacal_proprety,
+      </if>
+      <if test="productionMethod != null" >
+        production_method,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="toxicityLevel != null" >
+        toxicity_level,
+      </if>
+      <if test="acuteToxicityCharacteristics != null" >
+        acute_toxicity_characteristics,
+      </if>
+      <if test="flammabilityHazardCharacteristics != null" >
+        flammability_hazard_characteristics,
+      </if>
+      <if test="storageCharacteristics != null" >
+        storage_characteristics,
+      </if>
+      <if test="annihilator != null" >
+        annihilator,
+      </if>
+      <if test="professionalStandards != null" >
+        professional_standards,
+      </if>
+      <if test="dangerousMark != null" >
+        dangerous_mark,
+      </if>
+      <if test="hazardClassCode != null" >
+        Hazard_class_code,
+      </if>
+      <if test="safetyInstructions != null" >
+        safety_instructions,
+      </if>
+      <if test="dangerousGoodsTransportNumber != null" >
+        dangerous_goods_transport_number,
+      </if>
+      <if test="wgkgermany != null" >
+        wgkgermany,
+      </if>
+      <if test="rtecsNumber != null" >
+        rtecs_number,
+      </if>
+      <if test="packingGroup != null" >
+        packing_group,
+      </if>
+      <if test="customsCode != null" >
+        customs_code,
+      </if>
+      <if test="toxicSubstanceData != null" >
+        toxic_substance_data,
+      </if>
+      <if test="downstreamProducts != null" >
+        downstream_products,
+      </if>
+      <if test="upstreamMaterial != null" >
+        upstream_material,
+      </if>
+      <if test="secondLevelCategory != null" >
+        second_level_category,
+      </if>
+      <if test="threeLevelCategory != null" >
+        three_level_category,
+      </if>
+      <if test="exactMass != null" >
+        exact_mass,
+      </if>
+      <if test="logp != null" >
+        logp,
+      </if>
+      <if test="appearanceAndCharacter != null" >
+        appearance_and_character,
+      </if>
+      <if test="vaporPressure != null" >
+        vapor_pressure,
+      </if>
+      <if test="symbol != null" >
+        symbol,
+      </if>
+      <if test="signalWord != null" >
+        signal_word,
+      </if>
+      <if test="hazardStatement != null" >
+        hazard_statement,
+      </if>
+      <if test="cautionaryStatement != null" >
+        cautionary_statement,
+      </if>
+      <if test="hazardLevel != null" >
+        hazard_level,
+      </if>
+      <if test="mobaseUrl != null" >
+        mobase_url,
+      </if>
+      <if test="mdlNumber != null" >
+        mdl_number,
+      </if>
+      <if test="pubchemNumber != null" >
+        pubchem_number,
+      </if>
+      <if test="physicalData != null" >
+        Physical_data,
+      </if>
+      <if test="toxicologyData != null" >
+        toxicology_data,
+      </if>
+      <if test="ecologicalData != null" >
+        ecological_data,
+      </if>
+      <if test="molecularStructureData != null" >
+        molecular_structure_data,
+      </if>
+      <if test="computationalChemistryData != null" >
+        computational_chemistry_data,
+      </if>
+      <if test="propertyAndStability != null" >
+        property_and_stability,
+      </if>
+      <if test="storageMethod != null" >
+        storage_method,
+      </if>
+      <if test="syntheticMethod != null" >
+        synthetic_method,
+      </if>
+      <if test="purpose != null" >
+        purpose,
+      </if>
+      <if test="securityInformation != null" >
+        security_information,
+      </if>
+      <if test="huashangUrl != null" >
+        huashang_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cas != null" >
+        #{cas,jdbcType=VARCHAR},
+      </if>
+      <if test="chinessName != null" >
+        #{chinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="chinessSynonym != null" >
+        #{chinessSynonym,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishSynonym != null" >
+        #{englishSynonym,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularFormula != null" >
+        #{molecularFormula,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularWeight != null" >
+        #{molecularWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="einecs != null" >
+        #{einecs,jdbcType=VARCHAR},
+      </if>
+      <if test="meltingPoint != null" >
+        #{meltingPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="boilingPoint != null" >
+        #{boilingPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="density != null" >
+        #{density,jdbcType=VARCHAR},
+      </if>
+      <if test="refractivity != null" >
+        #{refractivity,jdbcType=VARCHAR},
+      </if>
+      <if test="fema != null" >
+        #{fema,jdbcType=VARCHAR},
+      </if>
+      <if test="flashPoint != null" >
+        #{flashPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="storageCondition != null" >
+        #{storageCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="waterSolubility != null" >
+        #{waterSolubility,jdbcType=VARCHAR},
+      </if>
+      <if test="sensibility != null" >
+        #{sensibility,jdbcType=VARCHAR},
+      </if>
+      <if test="merck != null" >
+        #{merck,jdbcType=VARCHAR},
+      </if>
+      <if test="brn != null" >
+        #{brn,jdbcType=VARCHAR},
+      </if>
+      <if test="stabilization != null" >
+        #{stabilization,jdbcType=VARCHAR},
+      </if>
+      <if test="chemicalbookUrl != null" >
+        #{chemicalbookUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="chemacalProprety != null" >
+        #{chemacalProprety,jdbcType=VARCHAR},
+      </if>
+      <if test="productionMethod != null" >
+        #{productionMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="toxicityLevel != null" >
+        #{toxicityLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="acuteToxicityCharacteristics != null" >
+        #{acuteToxicityCharacteristics,jdbcType=VARCHAR},
+      </if>
+      <if test="flammabilityHazardCharacteristics != null" >
+        #{flammabilityHazardCharacteristics,jdbcType=VARCHAR},
+      </if>
+      <if test="storageCharacteristics != null" >
+        #{storageCharacteristics,jdbcType=VARCHAR},
+      </if>
+      <if test="annihilator != null" >
+        #{annihilator,jdbcType=VARCHAR},
+      </if>
+      <if test="professionalStandards != null" >
+        #{professionalStandards,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousMark != null" >
+        #{dangerousMark,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardClassCode != null" >
+        #{hazardClassCode,jdbcType=VARCHAR},
+      </if>
+      <if test="safetyInstructions != null" >
+        #{safetyInstructions,jdbcType=VARCHAR},
+      </if>
+      <if test="dangerousGoodsTransportNumber != null" >
+        #{dangerousGoodsTransportNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wgkgermany != null" >
+        #{wgkgermany,jdbcType=VARCHAR},
+      </if>
+      <if test="rtecsNumber != null" >
+        #{rtecsNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="packingGroup != null" >
+        #{packingGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="customsCode != null" >
+        #{customsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="toxicSubstanceData != null" >
+        #{toxicSubstanceData,jdbcType=VARCHAR},
+      </if>
+      <if test="downstreamProducts != null" >
+        #{downstreamProducts,jdbcType=VARCHAR},
+      </if>
+      <if test="upstreamMaterial != null" >
+        #{upstreamMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="secondLevelCategory != null" >
+        #{secondLevelCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="threeLevelCategory != null" >
+        #{threeLevelCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="exactMass != null" >
+        #{exactMass,jdbcType=VARCHAR},
+      </if>
+      <if test="logp != null" >
+        #{logp,jdbcType=VARCHAR},
+      </if>
+      <if test="appearanceAndCharacter != null" >
+        #{appearanceAndCharacter,jdbcType=VARCHAR},
+      </if>
+      <if test="vaporPressure != null" >
+        #{vaporPressure,jdbcType=VARCHAR},
+      </if>
+      <if test="symbol != null" >
+        #{symbol,jdbcType=VARCHAR},
+      </if>
+      <if test="signalWord != null" >
+        #{signalWord,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardStatement != null" >
+        #{hazardStatement,jdbcType=VARCHAR},
+      </if>
+      <if test="cautionaryStatement != null" >
+        #{cautionaryStatement,jdbcType=VARCHAR},
+      </if>
+      <if test="hazardLevel != null" >
+        #{hazardLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="mobaseUrl != null" >
+        #{mobaseUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mdlNumber != null" >
+        #{mdlNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="pubchemNumber != null" >
+        #{pubchemNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="physicalData != null" >
+        #{physicalData,jdbcType=VARCHAR},
+      </if>
+      <if test="toxicologyData != null" >
+        #{toxicologyData,jdbcType=VARCHAR},
+      </if>
+      <if test="ecologicalData != null" >
+        #{ecologicalData,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularStructureData != null" >
+        #{molecularStructureData,jdbcType=VARCHAR},
+      </if>
+      <if test="computationalChemistryData != null" >
+        #{computationalChemistryData,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyAndStability != null" >
+        #{propertyAndStability,jdbcType=VARCHAR},
+      </if>
+      <if test="storageMethod != null" >
+        #{storageMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="syntheticMethod != null" >
+        #{syntheticMethod,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null" >
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="securityInformation != null" >
+        #{securityInformation,jdbcType=VARCHAR},
+      </if>
+      <if test="huashangUrl != null" >
+        #{huashangUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <sql id="Base_where_select">
+    <where>
+      <if test="chinessName != null and chinessName != ''">
+        chiness_name like CONCAT('%', #{chinessName}, '%')
+      </if>
+      <if test="chinessSynonym != null and chinessSynonym != ''">
+        and chiness_synonym like CONCAT('%', #{chinessSynonym}, '%')
+      </if>
+      <if test="casInfoId != null and casInfoId != ''">
+        and cas_info_id = #{casInfoId}
+      </if>
+      <if test="cas != null and cas != ''">
+        and cas = #{cas}
+      </if>
+    </where>
+  </sql>
+
+  <select id="selectByQuery" resultMap="BaseResultMap" parameterType="com.shijihui.query.ProductInfoQuery" >
+    select
+    <include refid="Base_Column_List" />
+    from cas_info
+    <include refid="Base_where_select" />
+    <if test="needPage">
+      limit #{start}, #{end}
+    </if>
+  </select>
+
+  <select id="countByQuery" resultType="java.lang.Integer" parameterType="com.shijihui.query.ProductInfoQuery" >
+    select count(*)
+    from cas_info
+    <include refid="Base_where_select" />
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from cas_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

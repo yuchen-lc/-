@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shijihui.mapper.ProductInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.shijihui.entity.ProductInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="chiness_name" property="chinessName" jdbcType="VARCHAR" />
+    <result column="chiness_synonym" property="chinessSynonym" jdbcType="VARCHAR" />
+    <result column="english_name" property="englishName" jdbcType="VARCHAR" />
+    <result column="english_synonym" property="englishSynonym" jdbcType="VARCHAR" />
+    <result column="cas_info_id" property="casInfoId" jdbcType="INTEGER" />
+    <result column="cas" property="cas" jdbcType="VARCHAR" />
+    <result column="molecular_formula" property="molecularFormula" jdbcType="VARCHAR" />
+    <result column="molecular_weight" property="molecularWeight" jdbcType="VARCHAR" />
+    <result column="einecs" property="einecs" jdbcType="VARCHAR" />
+    <result column="mol_file" property="molFile" jdbcType="VARCHAR" />
+    <result column="molecular_img" property="molecularImg" jdbcType="VARCHAR" />
+    <result column="melting_point" property="meltingPoint" jdbcType="VARCHAR" />
+    <result column="boiling_point" property="boilingPoint" jdbcType="VARCHAR" />
+    <result column="density" property="density" jdbcType="VARCHAR" />
+    <result column="refractivity" property="refractivity" jdbcType="VARCHAR" />
+    <result column="fema" property="fema" jdbcType="VARCHAR" />
+    <result column="flash_point" property="flashPoint" jdbcType="VARCHAR" />
+    <result column="storage_condition" property="storageCondition" jdbcType="VARCHAR" />
+    <result column="water_solubility" property="waterSolubility" jdbcType="VARCHAR" />
+    <result column="sensibility" property="sensibility" jdbcType="VARCHAR" />
+    <result column="merck" property="merck" jdbcType="VARCHAR" />
+    <result column="brn" property="brn" jdbcType="VARCHAR" />
+    <result column="stabilization" property="stabilization" jdbcType="VARCHAR" />
+    <result column="cas_db" property="casDb" jdbcType="VARCHAR" />
+    <result column="collection_url" property="collectionUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, chiness_name, chiness_synonym, english_name, english_synonym, cas_info_id, cas, 
+    molecular_formula, molecular_weight, einecs, mol_file, molecular_img, melting_point, 
+    boiling_point, density, refractivity, fema, flash_point, storage_condition, water_solubility, 
+    sensibility, merck, brn, stabilization, cas_db, collection_url
+  </sql>
+
+  <sql id="Base_where_select">
+    <where>
+      <if test="chinessName != null and chinessName != ''">
+        chiness_name like CONCAT('%', #{chinessName}, '%')
+      </if>
+      <if test="chinessSynonym != null and chinessSynonym != ''">
+        and chiness_synonym like CONCAT('%', #{chinessSynonym}, '%')
+      </if>
+      <if test="casInfoId != null and casInfoId != ''">
+        and cas_info_id = #{casInfoId}
+      </if>
+      <if test="cas != null and cas != ''">
+        and cas = #{cas}
+      </if>
+    </where>
+  </sql>
+
+  <select id="selectByQuery" resultMap="BaseResultMap" parameterType="com.shijihui.query.ProductInfoQuery" >
+    select
+    <include refid="Base_Column_List" />
+    from product_info
+    <include refid="Base_where_select" />
+    <if test="needPage">
+      limit #{start}, #{end}
+    </if>
+  </select>
+
+  <select id="countByQuery" resultType="java.lang.Integer" parameterType="com.shijihui.query.ProductInfoQuery" >
+    select count(*)
+    from product_info
+    <include refid="Base_where_select" />
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shijihui.entity.ProductInfo" >
+    insert into product_info (id, chiness_name, chiness_synonym, 
+      english_name, english_synonym, cas_info_id, 
+      cas, molecular_formula, molecular_weight, 
+      einecs, mol_file, molecular_img, 
+      melting_point, boiling_point, density, 
+      refractivity, fema, flash_point, 
+      storage_condition, water_solubility, sensibility, 
+      merck, brn, stabilization, 
+      cas_db, collection_url)
+    values (#{id,jdbcType=INTEGER}, #{chinessName,jdbcType=VARCHAR}, #{chinessSynonym,jdbcType=VARCHAR}, 
+      #{englishName,jdbcType=VARCHAR}, #{englishSynonym,jdbcType=VARCHAR}, #{casInfoId,jdbcType=INTEGER}, 
+      #{cas,jdbcType=VARCHAR}, #{molecularFormula,jdbcType=VARCHAR}, #{molecularWeight,jdbcType=VARCHAR}, 
+      #{einecs,jdbcType=VARCHAR}, #{molFile,jdbcType=VARCHAR}, #{molecularImg,jdbcType=VARCHAR}, 
+      #{meltingPoint,jdbcType=VARCHAR}, #{boilingPoint,jdbcType=VARCHAR}, #{density,jdbcType=VARCHAR}, 
+      #{refractivity,jdbcType=VARCHAR}, #{fema,jdbcType=VARCHAR}, #{flashPoint,jdbcType=VARCHAR}, 
+      #{storageCondition,jdbcType=VARCHAR}, #{waterSolubility,jdbcType=VARCHAR}, #{sensibility,jdbcType=VARCHAR}, 
+      #{merck,jdbcType=VARCHAR}, #{brn,jdbcType=VARCHAR}, #{stabilization,jdbcType=VARCHAR}, 
+      #{casDb,jdbcType=VARCHAR}, #{collectionUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shijihui.entity.ProductInfo" >
+    insert into product_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="chinessName != null" >
+        chiness_name,
+      </if>
+      <if test="chinessSynonym != null" >
+        chiness_synonym,
+      </if>
+      <if test="englishName != null" >
+        english_name,
+      </if>
+      <if test="englishSynonym != null" >
+        english_synonym,
+      </if>
+      <if test="casInfoId != null" >
+        cas_info_id,
+      </if>
+      <if test="cas != null" >
+        cas,
+      </if>
+      <if test="molecularFormula != null" >
+        molecular_formula,
+      </if>
+      <if test="molecularWeight != null" >
+        molecular_weight,
+      </if>
+      <if test="einecs != null" >
+        einecs,
+      </if>
+      <if test="molFile != null" >
+        mol_file,
+      </if>
+      <if test="molecularImg != null" >
+        molecular_img,
+      </if>
+      <if test="meltingPoint != null" >
+        melting_point,
+      </if>
+      <if test="boilingPoint != null" >
+        boiling_point,
+      </if>
+      <if test="density != null" >
+        density,
+      </if>
+      <if test="refractivity != null" >
+        refractivity,
+      </if>
+      <if test="fema != null" >
+        fema,
+      </if>
+      <if test="flashPoint != null" >
+        flash_point,
+      </if>
+      <if test="storageCondition != null" >
+        storage_condition,
+      </if>
+      <if test="waterSolubility != null" >
+        water_solubility,
+      </if>
+      <if test="sensibility != null" >
+        sensibility,
+      </if>
+      <if test="merck != null" >
+        merck,
+      </if>
+      <if test="brn != null" >
+        brn,
+      </if>
+      <if test="stabilization != null" >
+        stabilization,
+      </if>
+      <if test="casDb != null" >
+        cas_db,
+      </if>
+      <if test="collectionUrl != null" >
+        collection_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="chinessName != null" >
+        #{chinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="chinessSynonym != null" >
+        #{chinessSynonym,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishSynonym != null" >
+        #{englishSynonym,jdbcType=VARCHAR},
+      </if>
+      <if test="casInfoId != null" >
+        #{casInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="cas != null" >
+        #{cas,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularFormula != null" >
+        #{molecularFormula,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularWeight != null" >
+        #{molecularWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="einecs != null" >
+        #{einecs,jdbcType=VARCHAR},
+      </if>
+      <if test="molFile != null" >
+        #{molFile,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularImg != null" >
+        #{molecularImg,jdbcType=VARCHAR},
+      </if>
+      <if test="meltingPoint != null" >
+        #{meltingPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="boilingPoint != null" >
+        #{boilingPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="density != null" >
+        #{density,jdbcType=VARCHAR},
+      </if>
+      <if test="refractivity != null" >
+        #{refractivity,jdbcType=VARCHAR},
+      </if>
+      <if test="fema != null" >
+        #{fema,jdbcType=VARCHAR},
+      </if>
+      <if test="flashPoint != null" >
+        #{flashPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="storageCondition != null" >
+        #{storageCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="waterSolubility != null" >
+        #{waterSolubility,jdbcType=VARCHAR},
+      </if>
+      <if test="sensibility != null" >
+        #{sensibility,jdbcType=VARCHAR},
+      </if>
+      <if test="merck != null" >
+        #{merck,jdbcType=VARCHAR},
+      </if>
+      <if test="brn != null" >
+        #{brn,jdbcType=VARCHAR},
+      </if>
+      <if test="stabilization != null" >
+        #{stabilization,jdbcType=VARCHAR},
+      </if>
+      <if test="casDb != null" >
+        #{casDb,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionUrl != null" >
+        #{collectionUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shijihui.entity.ProductInfo" >
+    update product_info
+    <set >
+      <if test="chinessName != null" >
+        chiness_name = #{chinessName,jdbcType=VARCHAR},
+      </if>
+      <if test="chinessSynonym != null" >
+        chiness_synonym = #{chinessSynonym,jdbcType=VARCHAR},
+      </if>
+      <if test="englishName != null" >
+        english_name = #{englishName,jdbcType=VARCHAR},
+      </if>
+      <if test="englishSynonym != null" >
+        english_synonym = #{englishSynonym,jdbcType=VARCHAR},
+      </if>
+      <if test="casInfoId != null" >
+        cas_info_id = #{casInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="cas != null" >
+        cas = #{cas,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularFormula != null" >
+        molecular_formula = #{molecularFormula,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularWeight != null" >
+        molecular_weight = #{molecularWeight,jdbcType=VARCHAR},
+      </if>
+      <if test="einecs != null" >
+        einecs = #{einecs,jdbcType=VARCHAR},
+      </if>
+      <if test="molFile != null" >
+        mol_file = #{molFile,jdbcType=VARCHAR},
+      </if>
+      <if test="molecularImg != null" >
+        molecular_img = #{molecularImg,jdbcType=VARCHAR},
+      </if>
+      <if test="meltingPoint != null" >
+        melting_point = #{meltingPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="boilingPoint != null" >
+        boiling_point = #{boilingPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="density != null" >
+        density = #{density,jdbcType=VARCHAR},
+      </if>
+      <if test="refractivity != null" >
+        refractivity = #{refractivity,jdbcType=VARCHAR},
+      </if>
+      <if test="fema != null" >
+        fema = #{fema,jdbcType=VARCHAR},
+      </if>
+      <if test="flashPoint != null" >
+        flash_point = #{flashPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="storageCondition != null" >
+        storage_condition = #{storageCondition,jdbcType=VARCHAR},
+      </if>
+      <if test="waterSolubility != null" >
+        water_solubility = #{waterSolubility,jdbcType=VARCHAR},
+      </if>
+      <if test="sensibility != null" >
+        sensibility = #{sensibility,jdbcType=VARCHAR},
+      </if>
+      <if test="merck != null" >
+        merck = #{merck,jdbcType=VARCHAR},
+      </if>
+      <if test="brn != null" >
+        brn = #{brn,jdbcType=VARCHAR},
+      </if>
+      <if test="stabilization != null" >
+        stabilization = #{stabilization,jdbcType=VARCHAR},
+      </if>
+      <if test="casDb != null" >
+        cas_db = #{casDb,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionUrl != null" >
+        collection_url = #{collectionUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shijihui.entity.ProductInfo" >
+    update product_info
+    set chiness_name = #{chinessName,jdbcType=VARCHAR},
+      chiness_synonym = #{chinessSynonym,jdbcType=VARCHAR},
+      english_name = #{englishName,jdbcType=VARCHAR},
+      english_synonym = #{englishSynonym,jdbcType=VARCHAR},
+      cas_info_id = #{casInfoId,jdbcType=INTEGER},
+      cas = #{cas,jdbcType=VARCHAR},
+      molecular_formula = #{molecularFormula,jdbcType=VARCHAR},
+      molecular_weight = #{molecularWeight,jdbcType=VARCHAR},
+      einecs = #{einecs,jdbcType=VARCHAR},
+      mol_file = #{molFile,jdbcType=VARCHAR},
+      molecular_img = #{molecularImg,jdbcType=VARCHAR},
+      melting_point = #{meltingPoint,jdbcType=VARCHAR},
+      boiling_point = #{boilingPoint,jdbcType=VARCHAR},
+      density = #{density,jdbcType=VARCHAR},
+      refractivity = #{refractivity,jdbcType=VARCHAR},
+      fema = #{fema,jdbcType=VARCHAR},
+      flash_point = #{flashPoint,jdbcType=VARCHAR},
+      storage_condition = #{storageCondition,jdbcType=VARCHAR},
+      water_solubility = #{waterSolubility,jdbcType=VARCHAR},
+      sensibility = #{sensibility,jdbcType=VARCHAR},
+      merck = #{merck,jdbcType=VARCHAR},
+      brn = #{brn,jdbcType=VARCHAR},
+      stabilization = #{stabilization,jdbcType=VARCHAR},
+      cas_db = #{casDb,jdbcType=VARCHAR},
+      collection_url = #{collectionUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
